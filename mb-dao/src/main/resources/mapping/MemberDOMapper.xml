@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wj.membercheck.mbdao.mapper.MemberDOMapper">
+  <resultMap id="BaseResultMap" type="com.wj.membercheck.mbdao.model.MemberDO">
+    <id column="mem_id" jdbcType="INTEGER" property="memId" />
+    <result column="mem_name" jdbcType="VARCHAR" property="memName" />
+    <result column="mem_ctime" jdbcType="TIMESTAMP" property="memCtime" />
+    <result column="mem_role" jdbcType="VARCHAR" property="memRole" />
+    <result column="mem_score" jdbcType="DOUBLE" property="memScore" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    mem_id, mem_name, mem_ctime, mem_role, mem_score
+  </sql>
+  <select id="selectByExample" parameterType="com.wj.membercheck.mbdao.model.MemberDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from members
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from members
+    where mem_id = #{memId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from members
+    where mem_id = #{memId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wj.membercheck.mbdao.model.MemberDO">
+    <selectKey keyProperty="memId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into members (mem_name, mem_ctime, mem_role, 
+      mem_score)
+    values (#{memName,jdbcType=VARCHAR}, #{memCtime,jdbcType=TIMESTAMP}, #{memRole,jdbcType=VARCHAR}, 
+      #{memScore,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wj.membercheck.mbdao.model.MemberDO">
+    <selectKey keyProperty="memId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into members
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="memName != null">
+        mem_name,
+      </if>
+      <if test="memCtime != null">
+        mem_ctime,
+      </if>
+      <if test="memRole != null">
+        mem_role,
+      </if>
+      <if test="memScore != null">
+        mem_score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="memName != null">
+        #{memName,jdbcType=VARCHAR},
+      </if>
+      <if test="memCtime != null">
+        #{memCtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memRole != null">
+        #{memRole,jdbcType=VARCHAR},
+      </if>
+      <if test="memScore != null">
+        #{memScore,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wj.membercheck.mbdao.model.MemberDOExample" resultType="java.lang.Long">
+    select count(*) from members
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wj.membercheck.mbdao.model.MemberDO">
+    update members
+    <set>
+      <if test="memName != null">
+        mem_name = #{memName,jdbcType=VARCHAR},
+      </if>
+      <if test="memCtime != null">
+        mem_ctime = #{memCtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memRole != null">
+        mem_role = #{memRole,jdbcType=VARCHAR},
+      </if>
+      <if test="memScore != null">
+        mem_score = #{memScore,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where mem_id = #{memId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wj.membercheck.mbdao.model.MemberDO">
+    update members
+    set mem_name = #{memName,jdbcType=VARCHAR},
+      mem_ctime = #{memCtime,jdbcType=TIMESTAMP},
+      mem_role = #{memRole,jdbcType=VARCHAR},
+      mem_score = #{memScore,jdbcType=DOUBLE}
+    where mem_id = #{memId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,4 @@
+# Project exclude paths
+/mb-biz/target/
+/mb-dao/target/
+/mb-web/target/

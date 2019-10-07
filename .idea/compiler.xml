@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mbbiz" />
+        <module name="mbweb" />
+        <module name="mbdao" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mbbiz" target="1.8" />
+      <module name="mbdao" target="1.8" />
+      <module name="mbweb" target="1.8" />
+      <module name="membercheck" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mbbiz" options="-parameters" />
+      <module name="mbdao" options="-parameters" />
+      <module name="mbweb" options="-parameters" />
+      <module name="membercheck" options="-parameters" />
+    </option>
+  </component>
+</project>
