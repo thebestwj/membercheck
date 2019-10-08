@@ -105,6 +105,9 @@
 
     </div>
     <script>
+        axios.defaults.baseURL = 'http://127.0.0.1:8080';
+        axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
         Vue.filter('dataFormate', function (data) {
             var dt = new Date(data);
             var y = dt.getFullYear();
@@ -165,7 +168,7 @@
                     if (this.leaderchecked) member.memRole = member.memRole + ',leader';
                     if (this.teacherchecked) member.memRole = member.memRole + ',teacher'
 
-                    axios.post('http://127.0.0.1:8080/addmember', member)
+                    axios.post('/member', member)
                         .then(res => {
                             console.log(res)
                             if (res.data <= 0) $('#dataerror').removeClass('hidden');
@@ -182,7 +185,7 @@
                 del(id) {
                     this.listitem.some((item, i) => {
                         if (item.memId == id) {
-                            axios.post('http://127.0.0.1:8080/deletemember/' + id)
+                            axios.delete('/member/' + id)
                                 .then(res => {
                                     console.log('delete ' + id);
                                     this.listitem.splice(i, 1);
@@ -206,7 +209,7 @@
                 },
                 getall() {
                     console.log('ok');
-                    axios.get('http://127.0.0.1:8080/allmembers/student')
+                    axios.get('/members/student')
                         .then(res => {
                             console.log(res.data)
                             res.data.forEach(element => {

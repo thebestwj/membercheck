@@ -7,6 +7,7 @@ A simple MemberCheck Demo using
 + Springboot
 + Mybatis + generator
 + MySQL
++ Swagger2
 
 ### FrontEnd
 
