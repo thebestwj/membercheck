@@ -8,6 +8,7 @@
         <module>mb-web</module>
         <module>mb-biz</module>
         <module>mb-dao</module>
+        <module>mb-common</module>
     </modules>
 
     <parent>

@@ -235,6 +235,66 @@ public class MemberDOExample {
             return (Criteria) this;
         }
 
+        public Criteria andMemScoreIsNull() {
+            addCriterion("mem_score is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemScoreIsNotNull() {
+            addCriterion("mem_score is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemScoreEqualTo(Double value) {
+            addCriterion("mem_score =", value, "memScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemScoreNotEqualTo(Double value) {
+            addCriterion("mem_score <>", value, "memScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemScoreGreaterThan(Double value) {
+            addCriterion("mem_score >", value, "memScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemScoreGreaterThanOrEqualTo(Double value) {
+            addCriterion("mem_score >=", value, "memScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemScoreLessThan(Double value) {
+            addCriterion("mem_score <", value, "memScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemScoreLessThanOrEqualTo(Double value) {
+            addCriterion("mem_score <=", value, "memScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemScoreIn(List<Double> values) {
+            addCriterion("mem_score in", values, "memScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemScoreNotIn(List<Double> values) {
+            addCriterion("mem_score not in", values, "memScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemScoreBetween(Double value1, Double value2) {
+            addCriterion("mem_score between", value1, value2, "memScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemScoreNotBetween(Double value1, Double value2) {
+            addCriterion("mem_score not between", value1, value2, "memScore");
+            return (Criteria) this;
+        }
+
         public Criteria andMemCtimeIsNull() {
             addCriterion("mem_ctime is null");
             return (Criteria) this;
@@ -365,63 +425,73 @@ public class MemberDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andMemScoreIsNull() {
-            addCriterion("mem_score is null");
+        public Criteria andMemPwIsNull() {
+            addCriterion("mem_pw is null");
             return (Criteria) this;
         }
 
-        public Criteria andMemScoreIsNotNull() {
-            addCriterion("mem_score is not null");
+        public Criteria andMemPwIsNotNull() {
+            addCriterion("mem_pw is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMemScoreEqualTo(Double value) {
-            addCriterion("mem_score =", value, "memScore");
+        public Criteria andMemPwEqualTo(String value) {
+            addCriterion("mem_pw =", value, "memPw");
             return (Criteria) this;
         }
 
-        public Criteria andMemScoreNotEqualTo(Double value) {
-            addCriterion("mem_score <>", value, "memScore");
+        public Criteria andMemPwNotEqualTo(String value) {
+            addCriterion("mem_pw <>", value, "memPw");
             return (Criteria) this;
         }
 
-        public Criteria andMemScoreGreaterThan(Double value) {
-            addCriterion("mem_score >", value, "memScore");
+        public Criteria andMemPwGreaterThan(String value) {
+            addCriterion("mem_pw >", value, "memPw");
             return (Criteria) this;
         }
 
-        public Criteria andMemScoreGreaterThanOrEqualTo(Double value) {
-            addCriterion("mem_score >=", value, "memScore");
+        public Criteria andMemPwGreaterThanOrEqualTo(String value) {
+            addCriterion("mem_pw >=", value, "memPw");
             return (Criteria) this;
         }
 
-        public Criteria andMemScoreLessThan(Double value) {
-            addCriterion("mem_score <", value, "memScore");
+        public Criteria andMemPwLessThan(String value) {
+            addCriterion("mem_pw <", value, "memPw");
             return (Criteria) this;
         }
 
-        public Criteria andMemScoreLessThanOrEqualTo(Double value) {
-            addCriterion("mem_score <=", value, "memScore");
+        public Criteria andMemPwLessThanOrEqualTo(String value) {
+            addCriterion("mem_pw <=", value, "memPw");
             return (Criteria) this;
         }
 
-        public Criteria andMemScoreIn(List<Double> values) {
-            addCriterion("mem_score in", values, "memScore");
+        public Criteria andMemPwLike(String value) {
+            addCriterion("mem_pw like", value, "memPw");
             return (Criteria) this;
         }
 
-        public Criteria andMemScoreNotIn(List<Double> values) {
-            addCriterion("mem_score not in", values, "memScore");
+        public Criteria andMemPwNotLike(String value) {
+            addCriterion("mem_pw not like", value, "memPw");
             return (Criteria) this;
         }
 
-        public Criteria andMemScoreBetween(Double value1, Double value2) {
-            addCriterion("mem_score between", value1, value2, "memScore");
+        public Criteria andMemPwIn(List<String> values) {
+            addCriterion("mem_pw in", values, "memPw");
             return (Criteria) this;
         }
 
-        public Criteria andMemScoreNotBetween(Double value1, Double value2) {
-            addCriterion("mem_score not between", value1, value2, "memScore");
+        public Criteria andMemPwNotIn(List<String> values) {
+            addCriterion("mem_pw not in", values, "memPw");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemPwBetween(String value1, String value2) {
+            addCriterion("mem_pw between", value1, value2, "memPw");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemPwNotBetween(String value1, String value2) {
+            addCriterion("mem_pw not between", value1, value2, "memPw");
             return (Criteria) this;
         }
     }

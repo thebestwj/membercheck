@@ -7,11 +7,13 @@ public class MemberDO {
 
     private String memName;
 
+    private Double memScore;
+
     private Date memCtime;
 
     private String memRole;
 
-    private Double memScore;
+    private String memPw;
 
     public Integer getMemId() {
         return memId;
@@ -27,6 +29,14 @@ public class MemberDO {
 
     public void setMemName(String memName) {
         this.memName = memName == null ? null : memName.trim();
+    }
+
+    public Double getMemScore() {
+        return memScore;
+    }
+
+    public void setMemScore(Double memScore) {
+        this.memScore = memScore;
     }
 
     public Date getMemCtime() {
@@ -45,11 +55,11 @@ public class MemberDO {
         this.memRole = memRole == null ? null : memRole.trim();
     }
 
-    public Double getMemScore() {
-        return memScore;
+    public String getMemPw() {
+        return memPw;
     }
 
-    public void setMemScore(Double memScore) {
-        this.memScore = memScore;
+    public void setMemPw(String memPw) {
+        this.memPw = memPw == null ? null : memPw.trim();
     }
 }

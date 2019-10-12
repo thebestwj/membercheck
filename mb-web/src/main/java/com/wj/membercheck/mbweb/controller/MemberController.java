@@ -17,9 +17,9 @@ import java.util.List;
  * @author thebestwj
  */
 @Controller
-@CrossOrigin
 @ResponseBody
 @Api("成员操作")
+@CrossOrigin("http://127.0.0.1:5500")
 public class MemberController {
 
     @Autowired

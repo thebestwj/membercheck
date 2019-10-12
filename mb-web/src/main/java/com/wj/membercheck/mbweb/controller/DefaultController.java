@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author thebestwj
  */
 @Controller
-@CrossOrigin
 @ResponseBody
 public class DefaultController {
-
 
     @RequestMapping("/hello")
     public String hello(){

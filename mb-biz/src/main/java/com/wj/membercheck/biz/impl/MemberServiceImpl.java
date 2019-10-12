@@ -26,6 +26,11 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public MemberDO findByName(String name) {
+        return memberDOMapper.selectByName(name);
+    }
+
+    @Override
     public List<MemberDO> findAllByRole(String role) {
         MemberDOExample memberDOExample=new MemberDOExample();
         memberDOExample.createCriteria().andMemRoleLike("%"+ role + "%");

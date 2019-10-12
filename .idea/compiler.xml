@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="mbcommon" />
         <module name="mbbiz" />
         <module name="mbweb" />
         <module name="mbdao" />
@@ -13,6 +14,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="mbbiz" target="1.8" />
+      <module name="mbcommon" target="1.8" />
       <module name="mbdao" target="1.8" />
       <module name="mbweb" target="1.8" />
       <module name="membercheck" target="1.8" />
@@ -21,6 +23,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="mbbiz" options="-parameters" />
+      <module name="mbcommon" options="-parameters" />
       <module name="mbdao" options="-parameters" />
       <module name="mbweb" options="-parameters" />
       <module name="membercheck" options="-parameters" />

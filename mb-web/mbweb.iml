@@ -29,6 +29,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="mbbiz" />
     <orderEntry type="module" module-name="mbdao" />
+    <orderEntry type="module" module-name="mbcommon" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:2.1.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-json:2.1.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.9.3" level="project" />

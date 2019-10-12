@@ -4,10 +4,19 @@
   <resultMap id="BaseResultMap" type="com.wj.membercheck.mbdao.model.MemberDO">
     <id column="mem_id" jdbcType="INTEGER" property="memId" />
     <result column="mem_name" jdbcType="VARCHAR" property="memName" />
+    <result column="mem_score" jdbcType="DOUBLE" property="memScore" />
     <result column="mem_ctime" jdbcType="TIMESTAMP" property="memCtime" />
     <result column="mem_role" jdbcType="VARCHAR" property="memRole" />
-    <result column="mem_score" jdbcType="DOUBLE" property="memScore" />
+    <result column="mem_pw" jdbcType="VARCHAR" property="memPw" />
   </resultMap>
+
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from members
+    where mem_name = #{memName,jdbcType=VARCHAR}
+  </select>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -38,7 +47,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    mem_id, mem_name, mem_ctime, mem_role, mem_score
+    mem_id, mem_name, mem_score, mem_ctime, mem_role, mem_pw
   </sql>
   <select id="selectByExample" parameterType="com.wj.membercheck.mbdao.model.MemberDOExample" resultMap="BaseResultMap">
     select
@@ -69,10 +78,10 @@
     <selectKey keyProperty="memId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into members (mem_name, mem_ctime, mem_role, 
-      mem_score)
-    values (#{memName,jdbcType=VARCHAR}, #{memCtime,jdbcType=TIMESTAMP}, #{memRole,jdbcType=VARCHAR}, 
-      #{memScore,jdbcType=DOUBLE})
+    insert into members (mem_name, mem_score, mem_ctime, 
+      mem_role, mem_pw)
+    values (#{memName,jdbcType=VARCHAR}, #{memScore,jdbcType=DOUBLE}, #{memCtime,jdbcType=TIMESTAMP}, 
+      #{memRole,jdbcType=VARCHAR}, #{memPw,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.wj.membercheck.mbdao.model.MemberDO">
     <selectKey keyProperty="memId" order="AFTER" resultType="java.lang.Integer">
@@ -83,19 +92,25 @@
       <if test="memName != null">
         mem_name,
       </if>
+      <if test="memScore != null">
+        mem_score,
+      </if>
       <if test="memCtime != null">
         mem_ctime,
       </if>
       <if test="memRole != null">
         mem_role,
       </if>
-      <if test="memScore != null">
-        mem_score,
+      <if test="memPw != null">
+        mem_pw,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="memName != null">
         #{memName,jdbcType=VARCHAR},
+      </if>
+      <if test="memScore != null">
+        #{memScore,jdbcType=DOUBLE},
       </if>
       <if test="memCtime != null">
         #{memCtime,jdbcType=TIMESTAMP},
@@ -103,8 +118,8 @@
       <if test="memRole != null">
         #{memRole,jdbcType=VARCHAR},
       </if>
-      <if test="memScore != null">
-        #{memScore,jdbcType=DOUBLE},
+      <if test="memPw != null">
+        #{memPw,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -120,14 +135,17 @@
       <if test="memName != null">
         mem_name = #{memName,jdbcType=VARCHAR},
       </if>
+      <if test="memScore != null">
+        mem_score = #{memScore,jdbcType=DOUBLE},
+      </if>
       <if test="memCtime != null">
         mem_ctime = #{memCtime,jdbcType=TIMESTAMP},
       </if>
       <if test="memRole != null">
         mem_role = #{memRole,jdbcType=VARCHAR},
       </if>
-      <if test="memScore != null">
-        mem_score = #{memScore,jdbcType=DOUBLE},
+      <if test="memPw != null">
+        mem_pw = #{memPw,jdbcType=VARCHAR},
       </if>
     </set>
     where mem_id = #{memId,jdbcType=INTEGER}
@@ -135,9 +153,10 @@
   <update id="updateByPrimaryKey" parameterType="com.wj.membercheck.mbdao.model.MemberDO">
     update members
     set mem_name = #{memName,jdbcType=VARCHAR},
+      mem_score = #{memScore,jdbcType=DOUBLE},
       mem_ctime = #{memCtime,jdbcType=TIMESTAMP},
       mem_role = #{memRole,jdbcType=VARCHAR},
-      mem_score = #{memScore,jdbcType=DOUBLE}
+      mem_pw = #{memPw,jdbcType=VARCHAR}
     where mem_id = #{memId,jdbcType=INTEGER}
   </update>
 </mapper>

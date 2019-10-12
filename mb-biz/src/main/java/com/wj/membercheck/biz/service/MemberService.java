@@ -2,6 +2,7 @@ package com.wj.membercheck.biz.service;
 
 import com.wj.membercheck.mbdao.model.MemberDO;
 
+import java.lang.reflect.Member;
 import java.util.List;
 
 /**
@@ -11,7 +12,9 @@ import java.util.List;
  */
 public interface MemberService {
     MemberDO findById(int id);
+    MemberDO findByName(String name);
     List<MemberDO> findAllByRole(String role);
     int addOne(MemberDO memberDO);
     int deleteById(int id);
+
 }
