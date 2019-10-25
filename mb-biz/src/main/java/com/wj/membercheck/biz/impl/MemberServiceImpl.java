@@ -49,4 +49,9 @@ public class MemberServiceImpl implements MemberService {
         return  memberDOMapper.deleteByPrimaryKey(id);
 
     }
+
+    @Override
+    public void updateById(MemberDO memberDO) {
+        memberDOMapper.updateByPrimaryKey(memberDO);
+    }
 }

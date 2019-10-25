@@ -39,7 +39,7 @@ public class MemberController {
 
     @ApiOperation("添加成员")
     @PostMapping(value = "/member")
-    public int addMember(@NotNull @RequestBody(required = true) MemberDO memberDO){
+    public int addMember(@NotNull @RequestBody MemberDO memberDO){
         System.out.println(memberDO.getMemName());
         int newid =memberService.addOne(memberDO);
         System.out.println(newid);
@@ -48,7 +48,18 @@ public class MemberController {
 
     @ApiOperation("获取某类成员")
     @GetMapping("/members/{role}")
-    public List<MemberDO> members(@PathVariable @NotNull String role){
+    public List<MemberDO> members(@PathVariable String role){
         return memberService.findAllByRole(role);
+    }
+
+    @ApiOperation("更新成员")
+    @PostMapping("/member/update")
+    public String updateMember(@RequestBody MemberDO memberDO){
+        try {
+            memberService.updateById(memberDO);
+        }catch (Exception e){
+            return e.getMessage();
+        }
+        return "success";
     }
 }
